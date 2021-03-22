@@ -1,0 +1,1 @@
+<h1 style="color:red"><?=$param[0]; ?><h1>

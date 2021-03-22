@@ -1,0 +1,104 @@
+body{
+    margin: 0;
+}
+
+.nav{
+    height: 56px;
+    background-color: #4388CC;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo{
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: #ffffff;
+}
+
+.menu ul{
+    list-style: none;
+    display: flex;
+
+}
+
+.menu ul li{
+    margin-right: 10px;
+}
+
+.btn{
+    padding: 10px;
+    width: auto;
+    height: auto;
+    background-color: #3366FF;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:hover{
+    background-color: #999999;
+}
+
+.connexion{
+    margin-right: 10px;
+}
+
+.btn-menu{
+    width: 175px;
+    background-color:#CCCCCC;
+}
+
+.menu{
+    display: flex;
+    justify-content: center;
+}
+.text-main-content{
+    width: 500px;
+    margin-left: 100px;
+}
+.text-main h1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error{
+    color: red;
+}
+#authent{
+    width: 700px;
+    border: 1px solid;
+    height: 350px;
+    padding: 40px;
+
+}
+
+.form-item input{
+    width: 350px;
+    height: 50px;
+}
+
+.form-items{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-item{
+    margin: 10px;
+}
+
+.form-item label{
+    display: block;
+    width: 100px;
+}
+
+.connexion{
+    display: flex;
+    justify-content: center;
+}
+.connexion h1{
+    display: block;
+    text-align: center;
+}

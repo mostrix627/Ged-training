@@ -1,0 +1,13 @@
+{
+    "name": "rinox/ged-training",
+    "require-dev": {
+        "phpunit/phpunit": "^8.5"
+    },
+    "authors": [
+        {
+            "name": "Livaniaina",
+            "email": "livaniainamarino@gmail.com"
+        }
+    ],
+    "require": {}
+}

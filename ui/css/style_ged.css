@@ -1,0 +1,25 @@
+body{
+
+}
+
+.container{
+    margin: 100px auto;
+}
+.table-style{
+    border-collapse: collapse;
+    min-width: 400px;
+    width:auto;
+   box-shadow: 0 5px 50px rgba(0, 0, 0, 0.12);
+   border: 2px solid;
+   cursor: pointer;
+}
+
+.table-style thead th{
+    background-color: royalblue;
+    text-align: left;
+}
+
+th, td{
+    padding: 15px 20px;
+    /* border: 2px solid; */
+}
