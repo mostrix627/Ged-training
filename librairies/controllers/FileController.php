@@ -24,7 +24,8 @@ class FileController{
     }
 
     public function ged(){
-        $param=$this->fileModel->getAll();
+        $param['invalide']=$this->fileModel->getFileInvalide();
+        $param['valide']=$this->fileModel->getFileValide();
         if(isset($_SESSION['id'])){
             switch($_SESSION['role']){
                 case 'utilisateur':
@@ -35,7 +36,25 @@ class FileController{
             }
 
         }
+    }
 
+    public function modifStatus(){
+         foreach($_POST as $key=>$post){
+             if($key!="substatus"){    
+                $file=$this->fileModel->getFile($key);
+                $statusAvant=$file["status"];
+                $this->fileModel->updateStatus($key,$post);
+                $file=$this->fileModel->getFile($key);
+                if($statusAvant!=$file["status"]){
+                    if($file['status']=="non valide"){
+                        rename(Config::$doc_valid.$file['nom_fichier'],Config::$doc_not_valid.$file['nom_fichier']);
+                    }else{
+                        rename(Config::$doc_not_valid.$file['nom_fichier'],Config::$doc_valid.$file['nom_fichier']);
+                    }
+                }
+            }
+        }
+        
     }
 
 

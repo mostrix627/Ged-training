@@ -35,34 +35,34 @@
             <div class="tab-content">
                 <h2>Liste des fichiers</h2>
                 <table class="tab-table">
-                    <thead>
-                        <th><input type="checkbox" name="" id=""></th>
-                        <th>ID</th>
-                        <th>Nom fichier</th>
-                        <th>Importeur</th>
-                        <th>status</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="checkbox" name="" id=""></td><td>1</td><td>fichier A</td><td>Jean</td>
-                            <td>
-                                <select name="status" id="status">
-                                    <option value="validé">validé</option>
-                                    <option value="nonValidé">Non  validé</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name="" id=""></td><td>2</td><td>fichier B</td><td>Paul</td>
-                            <td>
-                                <select name="status" id="status">
-                                    <option value="validé">validé</option>
-                                    <option value="nonValidé">Non  validé</option>
-                                </select>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                        <thead>
+                            <th><input type="checkbox" name="" id=""></th>
+                            <th>ID</th>
+                            <th>Nom fichier</th>
+                            <th>Importeur</th>
+                            <th>status</th>
+                        </thead>
+                        <tbody>
+                        <form method="post" action="index.php?controller=fileCOntroller&task=modifStatus">
+                        <?php
+                        
+                        for($i=0;$i<count($param['valide']);$i++){
+                        ?>
+                            <tr>
+                           
+                                <td><input type="checkbox" name="" id=""></td>
+                                <td><?=$param['valide'][$i]['id_fichier'] ?></td>
+                                <td><?=$param['valide'][$i]['nom_fichier'] ?></td>
+                                <td><?=$param['valide'][$i]['id_user'] ?></td>
+                                <td><?=$param['valide'][$i]['status'] ?></td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                           </form>
+                        </tbody>
+                    </table>
+                   
                 <div class="btn-place">
                     <button class="btn btn-place-tel">Télécharger</button>
                     <button class="btn btn-place-impr">Imprimer</button>
@@ -71,7 +71,7 @@
 
             </div>
                 <div class="tab-content">
-                    <h2>Mes fichiers non validé</h2>
+                    <h2>Fichiers non validé</h2>
                     <table class="tab-table">
                         <thead>
                             <th><input type="checkbox" name="" id=""></th>
@@ -81,22 +81,36 @@
                             <th>status</th>
                         </thead>
                         <tbody>
-
+                        <form method="post" action="index.php?controller=fileCOntroller&task=modifStatus">
                         <?php
-                        for($i=0;$i<count($param);$i++){
+                        
+                        for($i=0;$i<count($param['invalide']);$i++){
                         ?>
                             <tr>
-                                <td><input type="checkbox" name="" id=""></td><td><?=$param[$i]['id_fichier'] ?></td><td><?=$param[$i]['nom_fichier'] ?></td><td><?=$param[$i]['id_user'] ?></td><td><?=$param[$i]['status'] ?> </td>
+                           
+                                <td><input type="checkbox" name="" id=""></td>
+                                <td><?=$param['invalide'][$i]['id_fichier'] ?></td>
+                                <td><?=$param['invalide'][$i]['nom_fichier'] ?></td>
+                                <td><?=$param['invalide'][$i]['id_user'] ?></td>
+                                <td>
+                            
+                                V<input type="radio" class="status" name="<?=$param['invalide'][$i]['id_fichier'] ?>" value="valide">
+                                N<input type="radio" class="status" name="<?=$param['invalide'][$i]['id_fichier'] ?>" value="non valide">
+                                <input type="submit" name="substatus" id="substatus">
+                                </td>
                             </tr>
                         <?php
                         }
                         ?>
+                           </form>
                         </tbody>
                     </table>
+                   
                     <div class="btn-place">
                         <form action="index.php?controller=fileController&task=insert" method="post" enctype="multipart/form-data">
                             <input name="doc[]" type="file" multiple/>
                             <button class="btn" type="submit">Ajouter fichier</button>
+                            <label for="substatus" class="btn">Actualisation</label>
                         </form>
 
                     </div>
@@ -104,5 +118,6 @@
 
       
    </main>
+   <script src="ui/js/modif.js"></script>
 </body>
 </html>
